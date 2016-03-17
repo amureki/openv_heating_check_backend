@@ -23,7 +23,7 @@ def run_vclient(vclient_command):
 
 if __name__ == '__main__':
     filepath = os.path.join(os.path.dirname(__file__), 'commands')
-    with open('commands') as f:
+    with open(filepath) as f:
         while True:
             for command in f:
                 run_vclient(command)
