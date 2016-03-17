@@ -3,6 +3,8 @@ import json
 import subprocess
 import os
 
+import time
+
 
 def run_vclient(vclient_command):
     command = 'vclient -h localhost:3002 -t vclient_template.tmpl -c {}'.format(vclient_command)
@@ -27,3 +29,4 @@ if __name__ == '__main__':
         while True:
             for command in f:
                 run_vclient(command)
+                time.sleep(1)
