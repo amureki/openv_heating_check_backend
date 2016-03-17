@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import json
 import subprocess
+import os
 
 
 def run_vclient(vclient_command):
@@ -10,7 +11,8 @@ def run_vclient(vclient_command):
     except subprocess.CalledProcessError:
         result = 'err'
     # result = '22.600000'
-    with open('data.json', 'r+') as f:
+    filepath = os.path.join(os.path.dirname(__file__), 'data.json')
+    with open(filepath, 'r+') as f:
         data = json.load(f)
         data[vclient_command] = result.rstrip()
         f.seek(0)
@@ -20,6 +22,7 @@ def run_vclient(vclient_command):
 
 
 if __name__ == '__main__':
+    filepath = os.path.join(os.path.dirname(__file__), 'commands')
     with open('commands') as f:
         while True:
             for command in f:

@@ -37,7 +37,8 @@ class MqttDelegate(object):
 
 
 def read_sensors_data():
-    with open('data.json', 'r') as f:
+    filepath = os.path.join(os.path.dirname(__file__), 'data.json')
+    with open(filepath, 'r') as f:
         data = json.load(f)
         return data
 
