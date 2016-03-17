@@ -21,13 +21,14 @@ def run_vclient(vclient_command, update=True):
         return result
     # result = '22.600000'
     filepath = os.path.join(os.path.dirname(__file__), 'data.json')
-    logging.debug('file path is %s' % filepath)
-    with open(filepath, 'r+') as f:
+
+    with open(filepath, 'r') as f:
         data = json.load(f)
         data[vclient_command] = result.rstrip()
-        f.seek(0)
+
+    with open(filepath, 'w') as f:
         f.write(json.dumps(data, indent=4))
-        f.truncate()
+
     return result
 
 
@@ -38,4 +39,4 @@ if __name__ == '__main__':
         while True:
             for command in commands:
                 run_vclient(command)
-                time.sleep(1)
+                time.sleep(2)
