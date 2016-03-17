@@ -17,7 +17,7 @@ dispatcher = updater.dispatcher
 def temperature(bot, update):
     temp = run_vclient('getTempA', update=False)
     if temp is not 'err':
-        text = 'Current office temperature is {}°C'.format(round(temp, 1))
+        text = 'Current office temperature is {}°C'.format(round(float(temp), 1))
     else:
         text = 'Our sensors gone for lunch, try again later'
     bot.sendMessage(chat_id=update.message.chat_id, text=text)
