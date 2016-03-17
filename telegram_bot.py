@@ -12,7 +12,7 @@ dispatcher = updater.dispatcher
 
 
 def temperature(bot, update):
-    text = run_vclient('getTempA')
+    text = run_vclient('getTempA', update=False)
     bot.sendMessage(chat_id=update.message.chat_id, text=text)
 
 
