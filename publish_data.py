@@ -7,11 +7,11 @@ import paho.mqtt.client as mqtt
 
 creds = {
     'clientId': os.environ.get('RELAYR_CLIENT_ID'),
-    'user':     os.environ.get('RELAYR_USER'),
+    'user': os.environ.get('RELAYR_USER'),
     'password': os.environ.get('RELAYR_PASSWORD'),
-    'topic':    os.environ.get('RELAYR_TOPIC'),
-    'server':   os.environ.get('RELAYR_SERVER'),
-    'port':     os.environ.get('RELAYR_PORT')
+    'topic': os.environ.get('RELAYR_TOPIC'),
+    'server': os.environ.get('RELAYR_SERVER'),
+    'port': os.environ.get('RELAYR_PORT')
 }
 
 
