@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
 import logging
 import os
 
@@ -12,7 +15,8 @@ dispatcher = updater.dispatcher
 
 
 def temperature(bot, update):
-    text = run_vclient('getTempA', update=False)
+    temp = run_vclient('getTempA', update=False)
+    text = 'Current office temperature is {}°C'.format(temp)
     bot.sendMessage(chat_id=update.message.chat_id, text=text)
 
 
