@@ -10,7 +10,9 @@ import time
 def run_vclient(vclient_command, update=True):
     logging.basicConfig(level=logging.DEBUG,
                         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-    command = 'vclient -h localhost:3002 -t vclient_template.tmpl -c {}'.format(vclient_command)
+    template = os.path.join(os.path.dirname(__file__), 'vclient_template.tmpl')
+    command = 'vclient -h localhost:3002 -t {0} -c {1}'.format(template,
+                                                               vclient_command)
     try:
         result = subprocess.check_output([command], shell=True)
     except subprocess.CalledProcessError:
