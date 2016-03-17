@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import json
+import logging
 import subprocess
 import os
 
@@ -7,6 +8,8 @@ import time
 
 
 def run_vclient(vclient_command, update=True):
+    logging.basicConfig(level=logging.DEBUG,
+                        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
     command = 'vclient -h localhost:3002 -t vclient_template.tmpl -c {}'.format(vclient_command)
     try:
         result = subprocess.check_output([command], shell=True)
@@ -16,6 +19,7 @@ def run_vclient(vclient_command, update=True):
         return result
     # result = '22.600000'
     filepath = os.path.join(os.path.dirname(__file__), 'data.json')
+    logging.debug('file path is %s' % filepath)
     with open(filepath, 'r+') as f:
         data = json.load(f)
         data[vclient_command] = result.rstrip()
