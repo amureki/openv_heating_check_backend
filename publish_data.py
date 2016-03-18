@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import datetime
 import json
 import os
 import time
@@ -33,7 +34,7 @@ class MqttDelegate(object):
         self.client.subscribe(self.credentials['topic'] + 'cmd')
 
     def on_publish(self, client, userdata, mid):
-        print('Message published.')
+        print('Message published at {}.'.format(datetime.datetime.now()))
 
 
 def read_sensors_data():
@@ -51,7 +52,6 @@ def publish_sensor_data(credentials, publishing_period):
     user, password = credentials['user'], credentials['password']
     client.username_pw_set(user, password)
     try:
-        print('Connecting to mqtt server.')
         server, port = credentials['server'], credentials['port']
         client.connect('mqtt.relayr.io', port=1883, keepalive=60)
     except:

@@ -1,10 +1,11 @@
 #!/usr/bin/env python
+import datetime
 import json
 import logging
-import subprocess
 import os
-
+import subprocess
 import time
+
 
 
 def run_vclient(vclient_command, update=True):
@@ -35,6 +36,7 @@ if __name__ == '__main__':
     with open(filepath) as f:
         commands = f.readlines()
         while True:
+            print('Fetching vclient data from {}'.format(datetime.datetime.now()))
             for command in commands:
                 run_vclient(command)
                 time.sleep(1)
